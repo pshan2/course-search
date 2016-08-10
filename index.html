@@ -31,6 +31,7 @@
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="_node_modules/papaparse/papaparse.min.js"></script>
 
         <!-- Polyfill(s) for older browsers -->
         <script src="node_modules/core-js/client/shim.min.js"></script>
@@ -42,31 +43,30 @@
         <!-- 2. Configure SystemJS -->
         <script src="systemjs.config.js"></script>
         <script>
-        System.import('app').catch(function(err){ console.error(err); });
+            System.import('app').catch(function(err){ console.error(err); });
         </script>
-        
-        <script src="_includes/javascript/papaparse.min.js"></script>
+
+
+        <!---3. Test FileReader -->
         <script>
-            Papa.parse('_includes/documents/normal.csv', {
-                        config: {
-                            delimiter: ","
-                        },
-                        before: function(file, inputElem)
-                        {
-                            console.log("Parsing file...", file);
-                        },
-                        error: function(err)
-                        {
-                            console.log("ERROR:", err);
-                            firstError = firstError || err;
-                            errorCount++;
-                        },
-                        complete: function(results)
-                        {
-                            console.log(results);
-                            console.log("Done with all files");
-                        }
-            });
+            $.ajax({
+                    url: '_includes/documents/test.csv',
+                    dataType: 'text',
+                    success: function(data){
+                        Papa.parse(data, {
+                            config: {
+                                header: false,
+                                skipEmptyLines: true
+                            },
+                            error: function(err, file, inputElem, reason){
+                                console.log(err);
+                            },
+                            complete: function(results){
+                                console.log(results);
+                            }
+                        });
+                    }
+                });
         </script>
     </body>
 </html>
