@@ -1,0 +1,1 @@
+{"version":3,"file":"college.component.js","sourceRoot":"","sources":["college.component.ts"],"names":[],"mappings":";;;;;;;;;;AAAA,qBAA0B,eAAe,CAAC,CAAA;AAM1C;IAII,iBAAY,KAAK,EAAE,QAAQ;QACvB,IAAI,CAAC,KAAK,GAAG,KAAK,CAAC;QACnB,IAAI,CAAC,QAAQ,GAAG,QAAQ,CAAC;IAC7B,CAAC;IAVL;QAAC,gBAAS,CAAC;YACP,QAAQ,EAAE,cAAc;SAC3B,CAAC;;eAAA;IASF,cAAC;AAAD,CAAC,AARD,IAQC;AARY,eAAO,UAQnB,CAAA"}

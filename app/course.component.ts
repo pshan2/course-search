@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
+import { Section } from './section.component';
 
-declare var courseInfo: any;
-
+@Component({
+    selector: 'course-item'
+})
 export class Course {
-    program: any;
-    subProgram: any;
-    subject: any;
+    id: number;
+    sections: Section[];
 
-    constructor(subject, subprogram, program: any){
-        this.program = program;
-        this.subProgram = subprogram;
-        this.subject = subject;
+    constructor(id, sections){
+        this.id = id;
+        this.sections = sections;
     }
 }   
