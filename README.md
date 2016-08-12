@@ -29,3 +29,14 @@ Office of Communications and Public Affairs, Emory University, 2016
                     - Class Wait Total
                     - Class Minimum Enroll
                     - Note
+
+###Update Aug 12th: Rule for CVS Parsing
+
+*In papaParse, use webworker to initialize array.*
+
+Page is actively loading csv row-by-row, without block.
+
+1. Row only incldes '_' means 
+
+    1. if next line only contains ',', line after next line starts with 'Report ID' Format
+    2.                   

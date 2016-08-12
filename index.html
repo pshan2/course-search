@@ -22,7 +22,9 @@
     <body>
         <div class="container">
             <div class="starter-template">
-                <course-search></course-search>
+                <course-search>
+                        <course-list></course-list>
+                </course-search>
             </div>
         </div>    
         <!-- /.container -->
@@ -31,7 +33,7 @@
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-        <script src="node_modules/papaparse/papaparse.min.js"></script>
+        <script src="node_modules/papaparse/papaparse.js"></script>
 
         <!-- Polyfill(s) for older browsers -->
         <script src="node_modules/core-js/client/shim.min.js"></script>
@@ -47,8 +49,8 @@
         </script>
 
 
-        <!---3. Test FileReader -->
         <script>
+            /*
             $.ajax({
                     url: '_includes/documents/test.csv',
                     dataType: 'text',
@@ -67,6 +69,7 @@
                         });
                     }
                 });
+            */
         </script>
     </body>
 </html>

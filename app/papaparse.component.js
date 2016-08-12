@@ -23,12 +23,12 @@ var CoursesListComponent = (function () {
     CoursesListComponent = __decorate([
         core_1.Component({
             selector: 'course-list',
-            templateUrl: 'template/course-list.component.html',
-            providers: [papaparse_service_1.papaParseService]
+            template: 'course-list.component.html',
+            directives: [CourseComponent]
         }), 
         __metadata('design:paramtypes', [papaparse_service_1.papaParseService])
     ], CoursesListComponent);
     return CoursesListComponent;
 }());
 exports.CoursesListComponent = CoursesListComponent;
-//# sourceMappingURL=course-list.component.js.map
+//# sourceMappingURL=papaparse.component.js.map

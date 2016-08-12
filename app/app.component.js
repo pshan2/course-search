@@ -9,13 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+require('./rxjs-operators');
+//Show data here without Router (Aug 12)
+var course_list_component_1 = require('./course-list.component');
 var AppComponent = (function () {
     function AppComponent() {
     }
     AppComponent = __decorate([
         core_1.Component({
             selector: 'course-search',
-            template: '<p>test</p>'
+            templateUrl: 'index.html',
+            directives: [course_list_component_1.CoursesListComponent]
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
