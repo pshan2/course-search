@@ -15,7 +15,7 @@ require('node_modules/papaparse/papaparse.js');
 var papaParseService = (function () {
     function papaParseService(http) {
         this.http = http;
-        this.systemurl = '_includes/documents/test.csv';
+        this.systemurl = 'documents/test.csv';
     }
     papaParseService.prototype.getSystem = function () {
         return this.http.get(this.systemurl).map(this.extractData).catch(this.handleError);

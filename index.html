@@ -12,7 +12,7 @@
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
         <!-- Fonts -->
         <!-- Local Stylesheet -->
-        <link href="/_includes/css/complied.css" rel="stylesheet"/>
+        <!--<link href="css/complied.css" rel="stylesheet"/>-->
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -46,30 +46,6 @@
         <script src="systemjs.config.js"></script>
         <script>
             System.import('app').catch(function(err){ console.error(err); });
-        </script>
-
-
-        <script>
-            /*
-            $.ajax({
-                    url: '_includes/documents/test.csv',
-                    dataType: 'text',
-                    success: function(data){
-                        Papa.parse(data, {
-                            config: {
-                                header: false,
-                                skipEmptyLines: true
-                            },
-                            error: function(err, file, inputElem, reason){
-                                console.log(err);
-                            },
-                            complete: function(results){
-                                console.log(results);
-                            }
-                        });
-                    }
-                });
-            */
         </script>
     </body>
 </html>

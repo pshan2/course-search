@@ -17,7 +17,7 @@ export class papaParseService{
 
     constructor (private http: Http){}
 
-    private systemurl = '_includes/documents/test.csv';
+    private systemurl = 'documents/test.csv';
 
     getSystem(): Observable<College[]>{
         return this.http.get(this.systemurl).map(this.extractData).catch(this.handleError);
