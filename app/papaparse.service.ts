@@ -42,12 +42,13 @@ export class papaParseService{
 var lineCount = 0;
 var readNextLine = true;
 function dataParse(res: Response): any{
-        var resultCollegeCollection: College[];
+        var resultCollegeCollection = new Array<College>();
         Papa.parse(res.text(), {
             worker: true,
             config: {
                 header: false,
-                skipEmptyLines: true
+                skipEmptyLines: true,
+                comments: '______'
             },
             error: function(err, file, inputElem, reason){
                 console.log(err);
@@ -64,9 +65,32 @@ function dataParse(res: Response): any{
                     
                     if(lineCount == 3){
                         //Start of New College/Program/Subject Combo
-                        var newCollege = line[i].split('-')[0];
-                        var newProgram = line[i].split('-')[1];
-                        var newSubject = getAttributeContent(String(line[i].split('-')[2]));
+                        var newCollege = String(line[i].split('-')[0]).trim();
+                        var newProgram = String(line[i].split('-')[1]).trim();
+                        var newSubject = getAttributeContent(String(line[i].split('-')[2]).trim());
+
+                        //1. Check if college exists
+                        if(resultCollegeCollection.length == 0 || !checkCollegeExist(resultCollegeCollection, newCollege)){
+                            var newsub = new Subject(newSubject, '', null);
+                            var newpro = new Program(newProgram, newsub);
+                            var newcol = new College(newCollege, newpro);
+                            resultCollegeCollection.push(newcol);
+                        }
+                        else{
+                            //2. Check if program exists. Always take the last college in college array
+                            if(!checkProgramExist(resultCollegeCollection[resultCollegeCollection.length-1], newProgram)){
+                                var newsub = new Subject(newSubject, '', null);
+                                var newpro = new Program(newProgram, null);
+                                addNewSubject(newpro, newsub);
+                                addNewProgram(resultCollegeCollection[resultCollegeCollection.length-1], newpro);
+                            }
+                            else{
+                                //3. Check if subject exists. Always take the last subject from program array
+                                
+                            }
+                        }
+                        
+
                         console.log(newCollege + '/' + newProgram + '/' + newSubject);
                         readNextLine = true;
                     }
@@ -89,3 +113,41 @@ function getAttributeContent(item: string){
     var result = item.substr(item.indexOf(':')+2);
     return result;
 }    
+
+function checkCollegeExist(colleges: College[], col: string){
+    var result = true;
+    for(var c of colleges){
+        if(c.title == col){
+            result = true;
+            break;
+        }else{
+            result = false;
+        }
+    }
+    return result;
+}
+function checkProgramExist(c: College, pro: string){
+    var result = true;
+    for(var p of c.programs){
+        if(p.title == pro){
+          result = true;
+            break;
+        }else{
+            result = false;
+        }
+    }
+    return result;
+}
+function checkSubjectExist(){
+
+}
+function addNewCollege(cols: Array<College>, col: College){
+    cols.push(col);
+
+}
+function addNewProgram(col: College, pro: Program){
+    col.programs.push(pro);
+}
+function addNewSubject(pro: Program, sub: Subject){
+    pro.subjects.push(sub);
+}

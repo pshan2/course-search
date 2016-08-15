@@ -11,6 +11,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 var Observable_1 = require('rxjs/Observable');
+var subject_component_1 = require('./subject.component');
+var program_component_1 = require('./program.component');
+var college_component_1 = require('./college.component');
 require('node_modules/papaparse/papaparse.js');
 var papaParseService = (function () {
     function papaParseService(http) {
@@ -40,12 +43,13 @@ exports.papaParseService = papaParseService;
 var lineCount = 0;
 var readNextLine = true;
 function dataParse(res) {
-    var resultCollegeCollection;
+    var resultCollegeCollection = new Array();
     Papa.parse(res.text(), {
         worker: true,
         config: {
             header: false,
-            skipEmptyLines: true
+            skipEmptyLines: true,
+            comments: '______'
         },
         error: function (err, file, inputElem, reason) {
             console.log(err);
@@ -61,9 +65,27 @@ function dataParse(res) {
                 }
                 if (lineCount == 3) {
                     //Start of New College/Program/Subject Combo
-                    var newCollege = line[i].split('-')[0];
-                    var newProgram = line[i].split('-')[1];
-                    var newSubject = getAttributeContent(String(line[i].split('-')[2]));
+                    var newCollege = String(line[i].split('-')[0]).trim();
+                    var newProgram = String(line[i].split('-')[1]).trim();
+                    var newSubject = getAttributeContent(String(line[i].split('-')[2]).trim());
+                    //1. Check if college exists
+                    if (resultCollegeCollection.length == 0 || !checkCollegeExist(resultCollegeCollection, newCollege)) {
+                        var newsub = new subject_component_1.Subject(newSubject, '', null);
+                        var newpro = new program_component_1.Program(newProgram, newsub);
+                        var newcol = new college_component_1.College(newCollege, newpro);
+                        resultCollegeCollection.push(newcol);
+                    }
+                    else {
+                        //2. Check if program exists. Always take the last college in college array
+                        if (!checkProgramExist(resultCollegeCollection[resultCollegeCollection.length - 1], newProgram)) {
+                            var newsub = new subject_component_1.Subject(newSubject, '', null);
+                            var newpro = new program_component_1.Program(newProgram, null);
+                            addNewSubject(newpro, newsub);
+                            addNewProgram(resultCollegeCollection[resultCollegeCollection.length - 1], newpro);
+                        }
+                        else {
+                        }
+                    }
                     console.log(newCollege + '/' + newProgram + '/' + newSubject);
                     readNextLine = true;
                 }
@@ -83,5 +105,44 @@ function dataParse(res) {
 function getAttributeContent(item) {
     var result = item.substr(item.indexOf(':') + 2);
     return result;
+}
+function checkCollegeExist(colleges, col) {
+    var result = true;
+    for (var _i = 0, colleges_1 = colleges; _i < colleges_1.length; _i++) {
+        var c = colleges_1[_i];
+        if (c.title == col) {
+            result = true;
+            break;
+        }
+        else {
+            result = false;
+        }
+    }
+    return result;
+}
+function checkProgramExist(c, pro) {
+    var result = true;
+    for (var _i = 0, _a = c.programs; _i < _a.length; _i++) {
+        var p = _a[_i];
+        if (p.title == pro) {
+            result = true;
+            break;
+        }
+        else {
+            result = false;
+        }
+    }
+    return result;
+}
+function checkSubjectExist() {
+}
+function addNewCollege(cols, col) {
+    cols.push(col);
+}
+function addNewProgram(col, pro) {
+    col.programs.push(pro);
+}
+function addNewSubject(pro, sub) {
+    pro.subjects.push(sub);
 }
 //# sourceMappingURL=papaparse.service.js.map
