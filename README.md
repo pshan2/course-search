@@ -30,13 +30,19 @@ Office of Communications and Public Affairs, Emory University, 2016
                     - Class Minimum Enroll
                     - Note
 
-###Update Aug 12th: Rule for CVS Parsing
+###Update Aug 15th: Rule for CVS Parsing
 
 *In papaParse, use webworker to initialize array.*
 
 Page is actively loading csv row-by-row, without block.
 
-1. Row only incldes '_' means 
+1. Row only incldes `_` means 
 
-    1. if next line only contains ',', line after next line starts with 'Report ID' Format
-    2.                   
+    1. if next line only contains `,`, line after next line starts with `Report ID` Format, which means **change subject or program or college**.
+    2. else next line starts for a new `section`
+
+2. If face `,` continue to read till next alphanumeric (or none `,` and none `_` value)
+
+3. If face `()`, item in it means notes for a section
+
+4. If face `:`, read till facing a `,`, means content of a attribute (`ReportId` is exception)

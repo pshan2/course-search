@@ -37,8 +37,10 @@ var papaParseService = (function () {
     return papaParseService;
 }());
 exports.papaParseService = papaParseService;
+var lineCount = 0;
+var readNextLine = true;
 function dataParse(res) {
-    var result;
+    var resultCollegeCollection;
     Papa.parse(res.text(), {
         worker: true,
         config: {
@@ -48,17 +50,38 @@ function dataParse(res) {
         error: function (err, file, inputElem, reason) {
             console.log(err);
         },
-        step: function (results) {
-            console.log(results);
-            for (var _i = 0, _a = results.data; _i < _a.length; _i++) {
-                var arrayItem = _a[_i];
-                for (var _b = 0, arrayItem_1 = arrayItem; _b < arrayItem_1.length; _b++) {
-                    var item = arrayItem_1[_b];
+        step: function (results, tempLimit) {
+            //pshan Aug 15: one object.data[0] is a one line in csv file
+            var line = results.data[0];
+            lineCount++;
+            for (var i = 0; i < line.length; i++) {
+                if (line[i].indexOf('Report ID') >= 0) {
+                    lineCount = 0;
+                    readNextLine = false;
+                }
+                if (lineCount == 3) {
+                    //Start of New College/Program/Subject Combo
+                    var newCollege = line[i].split('-')[0];
+                    var newProgram = line[i].split('-')[1];
+                    var newSubject = getAttributeContent(String(line[i].split('-')[2]));
+                    console.log(newCollege + '/' + newProgram + '/' + newSubject);
+                    readNextLine = true;
+                }
+                //Read next line if needed
+                if (!readNextLine) {
+                    break;
                 }
             }
-            result = results;
+            tempLimit++;
+            if (tempLimit > 10) {
+                Papa.abort();
+            }
         }
     });
+    return resultCollegeCollection;
+}
+function getAttributeContent(item) {
+    var result = item.substr(item.indexOf(':') + 2);
     return result;
 }
 //# sourceMappingURL=papaparse.service.js.map

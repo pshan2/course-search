@@ -38,8 +38,11 @@ export class papaParseService{
     
 }
 
+
+var lineCount = 0;
+var readNextLine = true;
 function dataParse(res: Response): any{
-        var result: any;
+        var resultCollegeCollection: College[];
         Papa.parse(res.text(), {
             worker: true,
             config: {
@@ -49,14 +52,40 @@ function dataParse(res: Response): any{
             error: function(err, file, inputElem, reason){
                 console.log(err);
             },
-            step: function(results){
-                console.log(results);
-                for(let arrayItem of results.data){
-                    for(let item of arrayItem){
+            step: function(results, tempLimit){
+                //pshan Aug 15: one object.data[0] is a one line in csv file
+                var line = results.data[0];
+                lineCount ++;
+                for(var i=0; i<line.length; i++){
+                    if(line[i].indexOf('Report ID') >=0){
+                        lineCount = 0;
+                        readNextLine = false;
+                    }
+                    
+                    if(lineCount == 3){
+                        //Start of New College/Program/Subject Combo
+                        var newCollege = line[i].split('-')[0];
+                        var newProgram = line[i].split('-')[1];
+                        var newSubject = getAttributeContent(String(line[i].split('-')[2]));
+                        console.log(newCollege + '/' + newProgram + '/' + newSubject);
+                        readNextLine = true;
+                    }
+
+                    //Read next line if needed
+                    if(!readNextLine){
+                        break;
                     }
                 }
-                result = results;
+                tempLimit ++;
+                if(tempLimit > 10){
+                    Papa.abort();
+                }
             }
         });
-        return result;
+        return resultCollegeCollection;
     }
+
+function getAttributeContent(item: string){
+    var result = item.substr(item.indexOf(':')+2);
+    return result;
+}    
