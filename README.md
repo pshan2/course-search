@@ -36,14 +36,16 @@ Office of Communications and Public Affairs, Emory University, 2016
 
 Page is actively loading csv row-by-row, without block.
 
-1. Row only incldes `_` means comment -> Ignore
+1. Row only incldes `_` means see next line
 
-2. if line starts with `Report ID` Format, which means **change subject or program or college**.
+ - if line starts with `Report ID` Format, which means **change subject or program or college**.
 
-3. else next line starts for a new `section`
+ - else next line starts for a new `course`
 
 2. If face `,` continue to read till next alphanumeric (or none `,` and none `_` value)
 
-3. If face `()`, item in it means notes for a section
+3. If full line is `,`, means next line starts `section` attributes. (`ReportId` is exception)
 
-4. If face `:`, read till facing a `,`, means content of a attribute (`ReportId` is exception)
+4. If face `()`, item in it means notes for a section
+
+5. If face `:`, read till facing a `,`, means content of a attribute (`ReportId` is exception)

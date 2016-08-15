@@ -10,15 +10,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var Course = (function () {
-    function Course(id, sections) {
+    function Course(id, name, sections) {
         this.id = id;
+        this.name = name;
         this.sections = sections;
     }
     Course = __decorate([
         core_1.Component({
             selector: 'course-item'
         }), 
-        __metadata('design:paramtypes', [Object, Object])
+        __metadata('design:paramtypes', [Object, Object, Object])
     ], Course);
     return Course;
 }());

@@ -10,7 +10,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var Section = (function () {
-    function Section(title, format, credit, location, room, days, time, instructor, classEnrollCap, classEnrollTotal, classWaitCap, classWaitTotal, classMinTotal, Note) {
+    function Section(id, title, format, credit, location, room, days, time, instructor, classEnrollCap, classEnrollTotal, classWaitCap, classWaitTotal, classMinTotal, Note) {
+        this.id = id;
         this.title = title;
         this.format = format;
         this.credit = credit;
@@ -30,7 +31,7 @@ var Section = (function () {
         core_1.Component({
             selector: 'section-item'
         }), 
-        __metadata('design:paramtypes', [Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object])
+        __metadata('design:paramtypes', [Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object, Object])
     ], Section);
     return Section;
 }());

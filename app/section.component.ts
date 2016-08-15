@@ -21,7 +21,8 @@ export class Section{
     classMinEnroll: number;
     Note: string;
 
-    constructor(title, format, credit, location, room, days, time, instructor, classEnrollCap, classEnrollTotal, classWaitCap, classWaitTotal, classMinTotal, Note){
+    constructor(id, title, format, credit, location, room, days, time, instructor, classEnrollCap, classEnrollTotal, classWaitCap, classWaitTotal, classMinTotal, Note){
+        this.id = id;
         this.title = title;
         this.format = format;
         this.credit = credit;

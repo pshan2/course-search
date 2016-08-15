@@ -6,10 +6,12 @@ import { Section } from './section.component';
 })
 export class Course {
     id: number;
+    name: string;
     sections: Section[];
 
-    constructor(id, sections){
+    constructor(id, name, sections){
         this.id = id;
+        this.name = name;
         this.sections = sections;
     }
 }   
