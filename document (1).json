@@ -1,0 +1,185 @@
+{
+  "College": 
+  [
+  {
+    "title": "Emory College of Arts and Sci",
+    "Program":[
+        {
+          "title": "Art History",
+          "Subject":[
+            {
+                "title": "Art History",
+                "id": "ARTHIST",
+                "Category":[
+                  {
+                    "category_number": "495R",
+                     "Course":[
+                        {
+                          "section number": "00P",
+                          "class number": "3758",
+                          "course title": "Honors",
+                          "component": "Supervision",
+                          "units": "4",
+                          "topics": "",
+                          "building": "",
+                          "room": "",
+                          "days": "TBA",
+                          "time": "TBA",
+                          "instrutor": [
+                            "", "Staff"
+                          ],
+                          "class entrl cap": "18",
+                          "class enrl total": "17",
+                          "class wait cap": "999",
+                          "class wait total": "0",
+                          "class min enrl": "0",
+                          "requirement designation": "Humanities, Arts, Performance",
+                          "note": "Permission Required Prior to Enrollment"
+                        } 
+                      ]
+                  }
+                ]
+            }, 
+            {
+                "title": "Atlanta Regional Consortium of Higher Education",
+                "id": "ARCH",
+                "Category":[
+                  {
+                    "category_number": "16",
+                     "Course":[
+                        {
+                          "section number": "00P",
+                          "class number": "4970",
+                          "course title": "ARCHE - Mercer University",
+                          "component": "Leture",
+                          "units": "12-Jan",
+                          "topics": "",
+                          "building": "TBA",
+                          "room": "TBA",
+                          "days": "TBA",
+                          "time": "TBA",
+                          "instrutor": [
+                            "", "Staff"
+                          ],
+                          "class entrl cap": "999",
+                          "class enrl total": "0",
+                          "class wait cap": "0",
+                          "class wait total": "0",
+                          "class min enrl": "0",
+                          "note": "Permission Required Prior to Enrollment"
+                        },
+                        {
+                          "section number": "00P",
+                          "class number": "4969",
+                          "course title": "ARCHE - Mercer University",
+                          "component": "Leture",
+                          "units": "12-Jan",
+                          "topics": "",
+                          "building": "TBA",
+                          "room": "TBA",
+                          "days": "TBA",
+                          "time": "TBA",
+                          "instrutor": [
+                            "", "Staff"
+                          ],
+                          "class entrl cap": "999",
+                          "class enrl total": "0",
+                          "class wait cap": "0",
+                          "class wait total": "0",
+                          "class min enrl": "0",
+                          "note": "Permission Required Prior to Enrollment"
+                        }
+                        
+                      ]
+                  }
+                ]
+            } 
+          ]
+        },
+        {
+          "title": "Arts & Science",
+          "Subject":[
+            {
+                "title": "Environmental Sciences",
+                "id": "ENVS",
+                "Category":[
+                  {
+                    "category_number": "130",
+                     "Course":[
+                        {
+                          "section number": "0",
+                          "class number": "6070",
+                          "course title": "Environmental Sciences",
+                          "component": "Lecture",
+                          "units": "3",
+                          "topics": "",
+                          "building": "Goodrich C. White Ha",
+                          "room": "103",
+                          "days": "TuTh",
+                          "time": "11:30 - 12:45",
+                          "instrutor": [
+                            "Gunderson, Lance H"
+                          ],
+                          "class entrl cap": "35",
+                          "class enrl total": "35",
+                          "class wait cap": "0",
+                          "class wait total": "0",
+                          "class min enrl": "0",
+                          "requirement designation": "Science, Nature, Technology",
+                          "note": ""
+                        } 
+                      ]
+                  }
+                ]
+            }
+          ]
+        }
+      ]
+  },
+  {
+    "title": "Candler School of Theology",
+    "Program":[
+        {
+          "title": "New Testament",
+          "Subject":[
+            {
+                "title": "Theology: New Testament",
+                "id": "NT",
+                "Category":[
+                  {
+                    "category_number": "501",
+                     "Course":[
+                        {
+                          "section number": "2",
+                          "class number": "5809",
+                          "course title": "Interpret Of The New Text I",
+                          "component": "Lecture",
+                          "units": "3",
+                          "topics": "",
+                          "building": "Rita Anne Rollins Bu",
+                          "room": "549",
+                          "days": "WF",
+                          "time": "09:30 - 10:50",
+                          "instrutor": [
+                            "Holladay,Carl R"
+                          ],
+                          "class entrl cap": "20",
+                          "class enrl total": "5",
+                          "class wait cap": "0",
+                          "class wait total": "0",
+                          "class min enrl": "0",
+                          "note": [
+                            "Instructor: Eve-Marie Becker",
+                            "Topic: Philippians"
+                          ]
+                        } 
+                      ]
+                  }
+                ]
+            }
+          ]
+        }
+      ]
+  }
+  ]  
+}
